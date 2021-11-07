@@ -542,3 +542,38 @@
     }
   }
 }
+
+table{
+  .bug-icon{
+    color: $red;
+    margin-right: 10px;
+  }
+
+  .development-icon{
+    color: $blue;
+    margin-right: 10px;
+  }
+
+  tr > td {
+    font-size: 0.890rem !important;
+  }
+}
+
+.modal-sm {
+  max-width: 500px !important;
+}
+
+.modal-md {
+  max-width: 800px !important;
+}
+
+.modal-l {
+  max-width: 950px !important;
+  min-height: 650px !important;
+}
+
+.modal-l>.modal-content,
+.modal-md>.modal-content,
+.modal-sm>.modal-content {
+  border-radius: 20px;
+}

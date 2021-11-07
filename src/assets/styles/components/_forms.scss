@@ -26,6 +26,7 @@
   border-radius: 2px;
   color: #ffffff;
   &:focus {
+    color: #ffffff;
     border: 1px solid rgba(71, 164, 71, 0.5);
     background-color: $input-bg;
   }
@@ -58,7 +59,7 @@ select {
     padding: .4375rem .75rem;
     border: 0;
     outline: 1px solid #322f2f;
-    color: $input-placeholder-color;
+    color: #ffffff;
     &:focus {
       outline: 1px solid $border-color;
     }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Collapse, Dropdown } from 'react-bootstrap';
 import { Trans } from 'react-i18next';
+import logo from '../../assets/images/waa2.png'
+import face15 from '../../assets/images/faces/face15.jpg'
 
 class Sidebar extends Component {
 
@@ -55,15 +57,14 @@ class Sidebar extends Component {
     return (
       <nav className="sidebar sidebar-offcanvas" id="sidebar">
         <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-          <a className="sidebar-brand brand-logo" href="index.html"><img src={require('../../assets/images/logo.svg')} alt="logo" /></a>
-          <a className="sidebar-brand brand-logo-mini" href="index.html"><img src={require('../../assets/images/logo-mini.svg')} alt="logo" /></a>
+        <img style={{width: '130px'}} className="sidebar-brand" src={logo} alt="logo" />
         </div>
         <ul className="nav">
           <li className="nav-item profile">
             <div className="profile-desc">
               <div className="profile-pic">
                 <div className="count-indicator">
-                  <img className="img-xs rounded-circle " src={require('../../assets/images/faces/face15.jpg')} alt="profile" />
+                  <img className="img-xs rounded-circle " src={face15} alt="profile" />
                   <span className="count bg-success"></span>
                 </div>
                 <div className="profile-name">
@@ -119,6 +120,12 @@ class Sidebar extends Component {
             <Link className="nav-link" to="/dashboard">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
               <span className="menu-title"><Trans>Dashboard</Trans></span>
+            </Link>
+          </li>
+          <li className={ this.isPathActive('/work-items') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
+            <Link className="nav-link" to="/work-items">
+              <span className="menu-icon"><i className="mdi mdi-table"></i></span>
+              <span className="menu-title"><Trans>Work Items</Trans></span>
             </Link>
           </li>
           <li className={ this.isPathActive('/basic-ui') ? 'nav-item menu-items active' : 'nav-item menu-items' }>
