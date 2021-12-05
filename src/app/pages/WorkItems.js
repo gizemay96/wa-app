@@ -231,6 +231,13 @@ function WorkItems(props) {
                                                                  </tr>
                                                             </thead>
                                                             <tbody>
+                                                                 {
+                                                                      filterApplying &&
+                                                                      <div class="spin-wrapper">
+                                                                           <div class="spinner">
+                                                                           </div>
+                                                                      </div>
+                                                                 }
                                                                  {!filterApplying &&
                                                                       workItems.map((item, ind) =>
                                                                            <tr style={{ color: '#9da2b5' }}>

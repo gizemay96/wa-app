@@ -160,9 +160,9 @@ function DocsModal(props) {
 
                                                             {
                                                                  loading &&
-                                                                 <div class="spinner">
-                                                                      <div class="dot1"></div>
-                                                                      <div class="dot2"></div>
+                                                                 <div class="spin-wrapper">
+                                                                      <div class="spinner">
+                                                                      </div>
                                                                  </div>
                                                             }
 
@@ -196,7 +196,7 @@ function DocsModal(props) {
                                                             }
                                                        </CardBody>
                                                        <CardFooter >
-                                                       <div className="d-flex justify-content-between">
+                                                            <div className="d-flex justify-content-between">
                                                                  <Button onClick={props.closeDocModal} className="btn-rounded" color="danger">
                                                                       Close
                                                                  </Button>
@@ -224,10 +224,10 @@ function DocsModal(props) {
                                              <CardBody>
                                                   {
                                                        loading &&
+                                                       <div class="spin-wrapper">
                                                        <div class="spinner">
-                                                            <div class="dot1"></div>
-                                                            <div class="dot2"></div>
                                                        </div>
+                                                  </div>
                                                   }
 
                                                   {
