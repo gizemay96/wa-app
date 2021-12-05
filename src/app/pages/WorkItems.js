@@ -9,8 +9,8 @@ import { Tooltip } from 'reactstrap';
 
 import { getWorks, deleteWork, getWorksCount } from '../../services/works.service'
 import CreateWork from "../components/modals/CreateWork";
-// import DocsModal from "components/Modals/DocsModal";
-// import DeleteConfirmation from "components/Confirmations/DeleteConfirmation";
+import DocsModal from "../components/modals/DocsModal";
+import DeleteConfirmation from "../components/partial/DeleteConfirmation";
 
 function WorkItems(props) {
 
@@ -254,13 +254,13 @@ function WorkItems(props) {
                                                                                      </Tooltip>
                                                                                 </td>
                                                                                 <td>
-                                                                                     <button type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
+                                                                                     <button onClick={() => editItem(item)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
                                                                                           <i style={{ color: 'white' }} className="mdi mdi-tooltip-edit ml-1"></i>
                                                                                      </button>
-                                                                                     <button type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
+                                                                                     <button onClick={() => openDocModal(item)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
                                                                                           <i style={{ color: 'white' }} className="mdi mdi-folder ml-1"></i>
                                                                                      </button>
-                                                                                     <button type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
+                                                                                     <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
                                                                                           <i style={{ color: 'white' }} className="mdi mdi-delete ml-1"></i>
                                                                                      </button>
                                                                                 </td>
@@ -282,7 +282,7 @@ function WorkItems(props) {
                                         <button style={{ pointerEvents: 'none' }} type="button" className="btn btn-primary btn-rounded btn-icon ml-4 mr-4">
                                              {currentPage.page}
                                         </button>
-                                        <button disabled={currentPage.page + 1 * filters._limit > currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
+                                        <button disabled={currentPage.page + 1 * filters._limit >= currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
                                              <i className="mdi mdi-arrow-right-bold ml-1"></i>
                                         </button>
                                    </div>
@@ -300,17 +300,17 @@ function WorkItems(props) {
                     </ModalBody>
                </Modal>
 
-               {/* <Modal isOpen={docsModal} toggle={toggleDocsModal} className={className}>
+               <Modal isOpen={docsModal} toggle={toggleDocsModal} className={className}>
                     <ModalBody>
                          <DocsModal updateItem={selectedItem} closeDocModal={closeDocModal}></DocsModal>
                     </ModalBody>
-               </Modal> */}
+               </Modal>
 
-               {/* <Modal isOpen={deleteConfirmModal} toggle={toggleDeleteConfirmModal} className={className}>
+               <Modal isOpen={deleteConfirmModal} toggle={toggleDeleteConfirmModal} className={className}>
                     <ModalBody>
                          <DeleteConfirmation message="Are You Sure You Want Delete ?" actionYes={() => deleteItem(selectedItem.id)} actionNo={confirmationModalActions}></DeleteConfirmation>
                     </ModalBody>
-               </Modal> */}
+               </Modal>
 
           </>
      );

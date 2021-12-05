@@ -8,15 +8,16 @@ import {
      Row,
      Col,
      UncontrolledAlert,
-     Input
+     Input,
+     CardFooter
 } from 'reactstrap';
 import { TabContent, TabPane, Nav, NavItem, NavLink, CardText, } from 'reactstrap';
 import classnames from 'classnames';
-import { deleteFileById, uploadFileToWorkItem } from 'services/fileService';
-import { getWorkById } from 'services/works.service';
-import { updateWork } from '../../services/works.service'
-import '../../assets/scss/black-dashboard-react/custom/_docsModal.scss'
-import '../../assets/scss/black-dashboard-react/custom/general.scss'
+import { deleteFileById, uploadFileToWorkItem } from '../../../services/fileService';
+import { getWorkById } from '../../../services/works.service';
+import { updateWork } from '../../../services/works.service'
+// import '../../assets/scss/black-dashboard-react/custom/_docsModal.scss'
+// import '../../assets/scss/black-dashboard-react/custom/general.scss'
 
 
 function DocsModal(props) {
@@ -145,18 +146,7 @@ function DocsModal(props) {
                                              <Col md="12">
                                                   <Card>
                                                        <CardHeader className="file-modal-header">
-                                                            <CardTitle tag="h4">Documents</CardTitle>
-                                                            <div>
-                                                                 <Button onClick={upload} className="btn-sm" color="primary">
-                                                                      <i class="fas fa-upload"></i> Upload
-                                                                 </Button>
-                                                                 <Button onClick={props.closeDocModal} className="btn-sm" color="primary">
-                                                                      Close
-                                                                 </Button>
-                                                                 <input id='selectFile' hidden multiple type="file" onChange={(event) => fileSelectHandler(event.target.files)}
-                                                                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf , .pdf , application/vnd.ms-excel , .doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                                 />
-                                                            </div>
+                                                            <CardTitle tag="h4" className="m-0">Documents</CardTitle>
                                                        </CardHeader>
                                                        <CardBody>
                                                             {
@@ -179,7 +169,7 @@ function DocsModal(props) {
                                                             {
                                                                  !loading && workItem.Documents && workItem.Documents?.length > 0 &&
                                                                  <div key="upload" className="d-flex mb-2 pb-3 align-items-start file-item">
-                                                                      <div className="col-3" style={{ color: "white", fontSize: "12px" }}>File Name</div>
+                                                                      <div className="col-3" style={{ color: "white", fontSize: "12px" }}>File Type</div>
                                                                       <div className="col-6 pl-0" style={{ color: "white", fontSize: "12px" }}>File Name</div>
                                                                       <div className="col-5">
                                                                       </div>
@@ -192,12 +182,12 @@ function DocsModal(props) {
                                                                            <div key={ind} className="d-flex mb-2 pb-3 align-items-center file-item">
                                                                                 <div className="col-2"><CardImg className="file-img" top src={fileIcons[doc.ext?.substring(1)]} alt="..." /></div>
                                                                                 <div className="col-7" style={{ color: "white", fontSize: "12px" }}>{doc.name}</div>
-                                                                                <div className="col-5">
-                                                                                     <Button target={doc.ext === '.pdf' ? '_blank' : ''} href={`https://waa-app.herokuapp.com${doc.url}`} className="btn-sm btn-round btn-icon btn-simple" color="info">
-                                                                                          <i class="fas fa-download"></i>
+                                                                                <div className="col-5 p-0">
+                                                                                     <Button target={doc.ext === '.pdf' ? '_blank' : ''} href={`https://waa-app.herokuapp.com${doc.url}`} className="btn-rounded mr-1" color="warning">
+                                                                                          <i class="fas fa-download m-0"></i>
                                                                                      </Button>
-                                                                                     <Button onClick={() => deleteFile(doc.id)} className="btn-sm btn-round btn-icon ml-2">
-                                                                                          <i class="fas fa-trash-alt"></i>
+                                                                                     <Button onClick={() => deleteFile(doc.id)} className="btn-rounded" color="danger">
+                                                                                          <i class="fas fa-trash-alt m-0"></i>
                                                                                      </Button>
                                                                                 </div>
                                                                            </div>
@@ -205,6 +195,19 @@ function DocsModal(props) {
                                                                  )
                                                             }
                                                        </CardBody>
+                                                       <CardFooter >
+                                                       <div className="d-flex justify-content-between">
+                                                                 <Button onClick={props.closeDocModal} className="btn-rounded" color="danger">
+                                                                      Close
+                                                                 </Button>
+                                                                 <Button onClick={upload} className="btn-rounded" color="primary">
+                                                                      <i class="fas fa-upload"></i> Upload
+                                                                 </Button>
+                                                                 <input id='selectFile' hidden multiple type="file" onChange={(event) => fileSelectHandler(event.target.files)}
+                                                                      accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf , .pdf , application/vnd.ms-excel , .doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                                 />
+                                                            </div>
+                                                       </CardFooter>
                                                   </Card>
                                              </Col>
                                         </Row>

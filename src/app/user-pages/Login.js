@@ -60,12 +60,12 @@ const Login = ({ history }) => {
                 </Form.Group>
                 <Form.Group className="d-flex search-field">
                   <Form.Control
-                      id="password"
-                      name="password"
-                      type="password"
-                      onChange={handleChange}
-                      value={values.password}
-                      autoComplete="off" placeholder="Password" size="lg" className="h-auto" />
+                    id="password"
+                    name="password"
+                    type="password"
+                    onChange={handleChange}
+                    value={values.password}
+                    autoComplete="off" placeholder="Password" size="lg" className="h-auto" />
                 </Form.Group>
                 <div className="mt-3">
                   <Button className="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">SIGN IN</Button>
