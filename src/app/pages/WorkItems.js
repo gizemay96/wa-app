@@ -4,7 +4,7 @@ import Moment from 'moment'
 import { ProgressBar, Dropdown, ButtonGroup } from 'react-bootstrap';
 
 // reactstrap components
-import {Row,Col, Button,Modal, ModalBody} from "reactstrap";
+import { Row, Col, Button, Modal, ModalBody } from "reactstrap";
 import { Tooltip } from 'reactstrap';
 
 import { getWorks, deleteWork, getWorksCount } from '../../services/works.service'
@@ -279,7 +279,7 @@ function WorkItems(props) {
                                         <button disabled={currentPage.page === 1} onClick={() => changePage('previous')} type="button" className="btn btn-primary btn-rounded btn-icon">
                                              <i className="mdi mdi-arrow-left-bold ml-1"></i>
                                         </button>
-                                        <button style={{pointerEvents: 'none'}} type="button" className="btn btn-primary btn-rounded btn-icon ml-4 mr-4">
+                                        <button style={{ pointerEvents: 'none' }} type="button" className="btn btn-primary btn-rounded btn-icon ml-4 mr-4">
                                              {currentPage.page}
                                         </button>
                                         <button disabled={currentPage.page + 1 * filters._limit > currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
