@@ -70,7 +70,7 @@
 @import "../assets/styles/layout";
 
 
-.spin-wrapper {
+
 
   .spinner {
     position: absolute;
@@ -109,7 +109,7 @@
       animation: spin 4s linear infinite;
     }
   }
-}
+
 
 @keyframes spin {
   0% {
