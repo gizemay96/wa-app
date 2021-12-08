@@ -40,6 +40,7 @@ function WorkItems(props) {
 
 
      useEffect(() => {
+          console.log(filters)
           setfilterApplying(true);
           getItems();
      }, [filters]);
@@ -232,11 +233,11 @@ function WorkItems(props) {
                                                             </thead>
                                                             <tbody>
                                                                  {
-                                                                      !filterApplying &&
+                                                                      filterApplying &&
                                                                            <div class="spinner">
                                                                            </div>
                                                                  }
-                                                                 {filterApplying &&
+                                                                 {!filterApplying &&
                                                                       workItems.map((item, ind) =>
                                                                            <tr style={{ color: '#9da2b5' }}>
                                                                                 <td>
@@ -287,7 +288,7 @@ function WorkItems(props) {
                                         <button style={{ pointerEvents: 'none' }} type="button" className="btn btn-primary btn-rounded btn-icon ml-4 mr-4">
                                              {currentPage.page}
                                         </button>
-                                        <button disabled={currentPage.page + 1 * filters._limit >= currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
+                                        <button disabled={currentPage.page + 1 * filters._limit > currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
                                              <i className="mdi mdi-arrow-right-bold ml-1"></i>
                                         </button>
                                    </div>
