@@ -4,13 +4,14 @@ import Moment from 'moment'
 import { ProgressBar, Dropdown, ButtonGroup } from 'react-bootstrap';
 
 // reactstrap components
-import { Row, Col, Button, Modal, ModalBody } from "reactstrap";
+import { Row, Col, Button, Modal, ModalBody, Input, InputGroup, InputGroupAddon, InputGroupText } from "reactstrap";
 import { Tooltip } from 'reactstrap';
 
 import { getWorks, deleteWork, getWorksCount } from '../../services/works.service'
 import CreateWork from "../components/modals/CreateWork";
 import DocsModal from "../components/modals/DocsModal";
 import DeleteConfirmation from "../components/partial/DeleteConfirmation";
+import { tr } from "date-fns/locale";
 
 function WorkItems(props) {
 
@@ -224,18 +225,120 @@ function WorkItems(props) {
                                                        <table className="table table-striped">
                                                             <thead>
                                                                  <tr>
-                                                                      <th> Type </th>
-                                                                      <th> Ticket ID </th>
-                                                                      <th> Work </th>
-                                                                      <th> Branch </th>
+                                                                      {searchInput.every(item => item !== 'type') &&
+                                                                           <th onClick={() => openInput('type')} ><b>Type</b> <i class="fas fa-search-plus ml-2"></i>
+                                                                           </th>
+                                                                      }
+                                                                      {/* WORK TYPE SEARCH INPUT */}
+                                                                      {searchInput.find(item => item === 'type') &&
+                                                                           <th className="d-flex p-0" >
+                                                                                <Input
+                                                                                     type="select"
+                                                                                     name="type"
+                                                                                     id="type"
+                                                                                     onChange={(event) => setFilter({ ...filters, type: event.target.value === 'All' ? '' : event.target.value })}
+                                                                                >
+                                                                                     <option>All</option>
+                                                                                     <option>Development</option>
+                                                                                     <option>Bug</option>
+                                                                                </Input>
+                                                                                <i onClick={() => removeFilter('type')} className="fas fa-times-circle col-md-2 p-0 close-search-icon"></i>
+                                                                           </th>
+                                                                      }
+                                                                      {/* TICKET ID HEADER */}
+                                                                      {searchInput.every(item => item !== 'ticketId') &&
+                                                                           <th onClick={() => openInput('ticketId')} ><b>Ticket Id</b> <i class="fas fa-search-plus ml-2"></i>
+                                                                           </th>
+                                                                      }
+                                                                      {/* TICKET ID SEARCH INPUT */}
+                                                                      {searchInput.find(item => item === 'ticketId') &&
+                                                                           <th className="align-items-center p-0" >
+                                                                                <InputGroup>
+                                                                                     <InputGroupAddon onClick={() => filters.ticketId_contains !== ticketIdInputValue ? setFilter({ ...filters, ticketId_contains: ticketIdInputValue }) : null} addonType="append">
+                                                                                          <InputGroupText className="text-input-search-icon">
+                                                                                               <i className="fas fa-search-plus" />
+                                                                                          </InputGroupText>
+                                                                                     </InputGroupAddon>
+                                                                                     <Input
+                                                                                          type="text"
+                                                                                          name="workName"
+                                                                                          id="workName"
+                                                                                          value={ticketIdInputValue}
+                                                                                          onChange={(e) => setticketIdInputValue(e.target.value)}
+                                                                                          onKeyDown={(event) => event.key === 'Enter' && filters.ticketId_contains !== ticketIdInputValue ? setFilter({ ...filters, ticketId_contains: ticketIdInputValue }) : null}
+                                                                                     />
+                                                                                     <i onClick={() => removeFilter('ticketId_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
+                                                                                </InputGroup>
+                                                                           </th>
+                                                                      }
+                                                                      {/* NAME HEADER */}
+                                                                      {searchInput.every(item => item !== 'name') &&
+                                                                           <th onClick={() => openInput('name')} ><b>Work</b> <i class="fas fa-search-plus ml-2"></i>
+                                                                           </th>
+                                                                      }
+                                                                      {/* NAME SEARCH INPUT */}
+                                                                      {searchInput.find(item => item === 'name') &&
+                                                                           <th className="align-items-center p-0">
+                                                                                <InputGroup>
+                                                                                     <InputGroupAddon onClick={() => filters.name_contains !== nameInputValue ? setFilter({ ...filters, name_contains: nameInputValue }) : null} addonType="append">
+                                                                                          <InputGroupText className="text-input-search-icon">
+                                                                                               <i className="fas fa-search-plus" />
+                                                                                          </InputGroupText>
+                                                                                     </InputGroupAddon>
+                                                                                     <Input
+                                                                                          type="text"
+                                                                                          name="workName"
+                                                                                          id="workName"
+                                                                                          value={nameInputValue}
+                                                                                          onChange={(e) => setNameInputValue(e.target.value)}
+                                                                                          onKeyDown={(event) => event.key === 'Enter' && filters.name_contains !== nameInputValue ? setFilter({ ...filters, name_contains: nameInputValue }) : null}
+                                                                                     />
+                                                                                     <i onClick={() => removeFilter('name_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
+                                                                                </InputGroup>
+                                                                           </th>
+                                                                      }
+                                                                      {/* BRANCH HEADER */}
+                                                                      {searchInput.every(item => item !== 'branch') &&
+                                                                           <th onClick={() => openInput('branch')} ><b>Branch</b> <i class="fas fa-search-plus ml-2"></i>
+                                                                           </th>
+                                                                      }
+                                                                      {/* BRANCH SEARCH INPUT */}
+                                                                      {searchInput.find(item => item === 'branch') &&
+                                                                           <th className="align-items-center p-0" >
+                                                                                <InputGroup>
+                                                                                     <InputGroupAddon onClick={() => filters.branch_contains !== branchInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null} addonType="append">
+                                                                                          <InputGroupText className="text-input-search-icon">
+                                                                                               <i className="fas fa-search-plus" />
+                                                                                          </InputGroupText>
+                                                                                     </InputGroupAddon>
+                                                                                     <Input
+                                                                                          type="text"
+                                                                                          name="branchName"
+                                                                                          id="branchName"
+                                                                                          value={branchInputValue}
+                                                                                          onChange={(e) => setBranchInputValue(e.target.value)}
+                                                                                          onKeyDown={(event) => event.key === 'Enter' && filters.branch_contains !== branchInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null}
+                                                                                     />
+                                                                                     <i onClick={() => removeFilter('branch_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
+                                                                                </InputGroup>
+                                                                           </th>
+                                                                      }
                                                                       <th> Environment </th>
                                                                  </tr>
                                                             </thead>
                                                             <tbody>
                                                                  {
                                                                       filterApplying &&
-                                                                           <div class="spinner">
-                                                                           </div>
+                                                                      <tr>
+                                                                           <td colspan="5">
+                                                                                <div className="d-flex w-100 justify-content-center">
+                                                                                     <div class="spinner">
+                                                                                     </div>
+                                                                                </div>
+
+                                                                           </td>
+
+                                                                      </tr>
                                                                  }
                                                                  {!filterApplying &&
                                                                       workItems.map((item, ind) =>

@@ -8,7 +8,7 @@ import { UserProvider } from "./contexts/UserContext";
 
 ReactDOM.render(
   <UserProvider>
-  <BrowserRouter basename="/demo/corona-react-free/template/demo_1/preview">
+  <BrowserRouter basename="">
     <App />
   </BrowserRouter>
   </UserProvider>
