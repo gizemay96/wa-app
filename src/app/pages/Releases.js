@@ -64,6 +64,9 @@ function Releases(props) {
 
      const getItems = async () => {
           const data = await getReleases(filters);
+          data.data.forEach(item => {
+               item.showBtnColor = getRandomColorForAttributeValue();
+          })
           setReleaseData([...data.data]);
           setLoading(false);
      }
@@ -242,7 +245,7 @@ function Releases(props) {
                                                             <td>{item.Project}</td>
                                                             <td><Button onClick={() => openReleaseItemsModal(item)}
                                                                  className="btn-simple btn-rounded btn-sm"
-                                                                 color={`${getRandomColorForAttributeValue()}`}
+                                                                 color={`${item.showBtnColor}`}
                                                             >Show</Button></td>
                                                             <td className="text-center">
                                                                  <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">

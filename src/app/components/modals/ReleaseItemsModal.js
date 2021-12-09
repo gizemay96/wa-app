@@ -13,7 +13,7 @@ import {
     Row,
     Col,
     Button,
-    Modal, ModalBody
+    Modal, ModalBody, CardFooter
 } from "reactstrap";
 import AddWorkModal from './AddWorkModal';
 import DeleteConfirmation from '../../components/partial/DeleteConfirmation';
@@ -111,14 +111,6 @@ function ReleaseItemsModal({ selectedRelease, closeReleaseItemsModal }, props) {
                                 <CardTitle tag="h4">( {Moment(selectedRelease.releaseDate).format('DD-MM-YYYY')} ) Release Scope</CardTitle>
                                 <p className="category">You can add or delete item</p>
                             </div>
-                            <div>
-                                <Button onClick={toggleWorkItemsModal} className="btn-sm" color="primary">
-                                    Add <i class="fas fa-plus-circle"></i>
-                                </Button>
-                                <Button onClick={closeReleaseItemsModal} className="btn-sm" color="primary">
-                                    Close <i class="fas fa-times-circle"></i>
-                                </Button>
-                            </div>
                         </CardHeader>
                         <CardBody className="table-case release-items-modal-body">
                             <Table className="tablesorter">
@@ -159,6 +151,16 @@ function ReleaseItemsModal({ selectedRelease, closeReleaseItemsModal }, props) {
                                 </tbody>
                             </Table>
                         </CardBody>
+                        <CardFooter>
+                            <div className="d-flex justify-content-between">
+                                <Button onClick={closeReleaseItemsModal} className="btn btn-rounded  " color="danger">
+                                    Close <i class="fas fa-times-circle"></i>
+                                </Button>
+                                <Button onClick={toggleWorkItemsModal} className="btn btn-rounded    " color="primary">
+                                    Add <i class="fas fa-plus-circle"></i>
+                                </Button>
+                            </div>
+                        </CardFooter>
                     </Card>
                 </Col>
             </Row>

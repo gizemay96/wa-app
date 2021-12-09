@@ -153,14 +153,6 @@ function AddWorkModal(props) {
                         </UncontrolledDropdown>
 
                     </div>
-                        <div>
-                            <Button onClick={() => props.updateReleaseItems(selectedItems)} className="btn-sm" color="primary">
-                                Save <i class="fas fa-check-circle"></i>
-                            </Button>
-                            <Button onClick={props.closeModal} className="btn-sm" color="primary">
-                                Close <i class="fas fa-times-circle"></i>
-                            </Button>
-                        </div>
                 </div>
 
                 <Row>
@@ -321,16 +313,28 @@ function AddWorkModal(props) {
                 </Row>
 
 
-                <div className="d-flex justify-content-center">
-                    <Button disabled={currentPage.page === 1} onClick={() => changePage('previous')} className="btn-icon" color="info" size="sm">
-                        <i class="fas fa-caret-left"></i>
-                    </Button>{` `}
-                    <Button disabled className="btn-simple ml-4 mr-4" color="info" size="sm">
-                        {currentPage.page}
-                    </Button>{` `}
-                    <Button disabled={currentPage.page + 1 * filters._limit > currentPage.total} onClick={() => changePage('next')} className="btn-icon" color="info" size="sm">
-                        <i class="fas fa-caret-right"></i>
-                    </Button>{` `}
+                <div className="d-flex justify-content-between align-items-enter p-2">
+                    <div className="d-flex align-items-center">
+                        <Button onClick={props.closeModal} className="btn btn-rounded mr-3" color="danger">
+                            Close <i class="fas fa-times-circle"></i>
+                        </Button>
+                    </div>
+                    <div className="pagination d-flex align-items-center">
+                        <button disabled={currentPage.page === 1} onClick={() => changePage('previous')} type="button" className="btn btn-primary btn-rounded btn-icon">
+                            <i className="mdi mdi-arrow-left-bold ml-1"></i>
+                        </button>
+                        <button style={{ pointerEvents: 'none' }} type="button" className="btn btn-primary btn-rounded btn-icon ml-4 mr-4">
+                            {currentPage.page}
+                        </button>
+                        <button disabled={currentPage.page + 1 * filters._limit > currentPage.total} onClick={() => changePage('next')} type="button" className="btn btn-primary btn-rounded btn-icon">
+                            <i className="mdi mdi-arrow-right-bold ml-1"></i>
+                        </button>
+                    </div>
+                    <div className="d-flex align-items-center">
+                        <Button onClick={() => props.updateReleaseItems(selectedItems)} className="btn btn-rounded" color="primary">
+                            Save <i class="fas fa-check-circle"></i>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </>
