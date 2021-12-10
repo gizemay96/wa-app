@@ -136,10 +136,10 @@ function AddWorkModal(props) {
     return (
         <>
             <div className="content">
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center mb-2">
                     <div>
                         <UncontrolledDropdown>
-                            <DropdownToggle caret data-toggle="dropdown">
+                            <DropdownToggle caret data-toggle="dropdown" className="btn btn-primary btn-rounded" id="dropdownMenuButton1" color="primary">
                                 Environment : {environments[filters.currentEnv - 1] || 'ALL'}
                             </DropdownToggle>
                             <DropdownMenu>
@@ -162,7 +162,8 @@ function AddWorkModal(props) {
                                 <CardTitle tag="h4">My Works</CardTitle>
                             </CardHeader>
                             <CardBody className="table-case">
-                                <Table className="tablesorter" hover>
+                                <div className="table-responsive">
+                                <table className="table table-striped" hover>
                                     <thead className="text-primary">
                                         {/* WORK TYPE HEADER */}
                                         <tr className="table-head-tr">
@@ -250,7 +251,7 @@ function AddWorkModal(props) {
                                             {searchInput.find(item => item === 'branch') &&
                                                 <th className="align-items-center p-0" >
                                                     <InputGroup>
-                                                        <InputGroupAddon onClick={() => filters.branch_contains !== nameInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null} addonType="append">
+                                                        <InputGroupAddon onClick={() => filters.branch_contains !== branchInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null} addonType="append">
                                                             <InputGroupText className="text-input-search-icon">
                                                                 <i className="fas fa-search-plus" />
                                                             </InputGroupText>
@@ -261,7 +262,7 @@ function AddWorkModal(props) {
                                                             id="branchName"
                                                             value={branchInputValue}
                                                             onChange={(e) => setBranchInputValue(e.target.value)}
-                                                            onKeyDown={(event) => event.key === 'Enter' && filters.branch_contains !== nameInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null}
+                                                            onKeyDown={(event) => event.key === 'Enter' && filters.branch_contains !== branchInputValue ? setFilter({ ...filters, branch_contains: branchInputValue }) : null}
                                                         />
                                                         <i onClick={() => removeFilter('branch_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
                                                     </InputGroup>
@@ -275,9 +276,9 @@ function AddWorkModal(props) {
                                             filterApplying &&
                                             <tr>
                                                 <td colspan="9">
-                                                    <div class="spinner">
-                                                        <div class="dot1"></div>
-                                                        <div class="dot2"></div>
+                                                    <div className="d-flex w-100 justify-content-center">
+                                                        <div class="spinner">
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -285,28 +286,34 @@ function AddWorkModal(props) {
                                         {!filterApplying &&
                                             workItems.map((item, ind) =>
                                                 <tr key={ind} className="table-body-tr">
-                                                    <td><i className={item.type === 'Bug' ? "fas fa-bug" : "fas fa-file-code"}></i> <span>{item.type}</span> </td>
+                                                    <td>
+                                                        <span className="menu-icon">
+                                                            <i className={item.type === 'Bug' ? "mdi mdi-bug bug-icon" : "mdi mdi-book-open-page-variant development-icon"}></i>
+                                                        </span>
+                                                        <span>{item.type}</span> </td>
                                                     <td>{item.ticketId}</td>
                                                     <td style={{ maxWidth: "220px" }}>{item.name}</td>
                                                     <td>{item.branch}</td>
-                                                    <td className="text-right">
+                                                    <td className="">
                                                         <FormGroup check>
-                                                            <Label check>
-                                                                <Input onChange={() => checkActions(item)}
-                                                                    checked={selectedItems.some(selected => selected.id === item.id)}
-                                                                    disabled={selectedItems.some(selected => selected.id === item.id && selected.disabled)}
-                                                                    type="checkbox" />{' '}
-                                                                <span className="form-check-sign">
-                                                                    <span className="check"></span>
-                                                                </span>
-                                                            </Label>
+                                                            <div className="form-check form-check-warning">
+                                                                <label className="form-check-label">
+                                                                    <input type="checkbox" className="form-check-input"
+                                                                        onChange={() => checkActions(item)}
+                                                                        checked={selectedItems.some(selected => selected.id === item.id)}
+                                                                        disabled={selectedItems.some(selected => selected.id === item.id && selected.disabled)}
+                                                                    />
+                                                                    <i className="input-helper"></i>
+                                                                </label>
+                                                            </div>
                                                         </FormGroup>
                                                     </td>
                                                 </tr>
                                             )
                                         }
                                     </tbody>
-                                </Table>
+                                </table>
+                                </div>
                             </CardBody>
                         </Card>
                     </Col>

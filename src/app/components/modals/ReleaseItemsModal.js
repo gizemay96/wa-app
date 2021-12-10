@@ -113,43 +113,49 @@ function ReleaseItemsModal({ selectedRelease, closeReleaseItemsModal }, props) {
                             </div>
                         </CardHeader>
                         <CardBody className="table-case release-items-modal-body">
-                            <Table className="tablesorter">
-                                <thead className="text-primary">
-                                    <tr className="table-head-tr">
-                                        <th>Type</th>
-                                        <th>Ticket Id</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {
-                                        loadingData &&
-                                        <tr>
-                                            <td colspan="9">
-                                                <div class="spinner">
-                                                    <div class="dot1"></div>
-                                                    <div class="dot2"></div>
-                                                </div>
-                                            </td>
+                            <div className="table-responsive">
+                                <table className="table table-striped">
+                                    <thead className="text-primary">
+                                        <tr className="table-head-tr">
+                                            <th>Type</th>
+                                            <th>Ticket Id</th>
                                         </tr>
-                                    }
+                                    </thead>
+                                    <tbody>
 
-                                    {!loadingData && releaseItemsData.works.length > 0 &&
-                                        releaseItemsData.works.map((item, index) =>
-                                            <tr key={index} className="table-body-tr">
-                                                <td><i className={item.type === 'Bug' ? "fas fa-bug" : "fas fa-file-code"}></i> <span>{item.type}</span> </td>
-                                                <td>{item.ticketId}</td>
-                                                <td className="text-right">
-                                                    <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
-                                                        <i style={{ color: 'white' }} className="mdi mdi-delete ml-1"></i>
-                                                    </button>
+                                        {
+                                            loadingData &&
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div className="d-flex w-100 justify-content-center">
+                                                        <div class="spinner">
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
-                                        )
-                                    }
+                                        }
 
-                                </tbody>
-                            </Table>
+                                        {!loadingData && releaseItemsData.works.length > 0 &&
+                                            releaseItemsData.works.map((item, index) =>
+                                                <tr key={index} className="table-body-tr">
+                                                    <td>
+                                                        <span className="menu-icon">
+                                                            <i className={item.type === 'Bug' ? "mdi mdi-bug bug-icon" : "mdi mdi-book-open-page-variant development-icon"}></i>
+                                                        </span>
+                                                        <span>{item.type}</span> </td>
+                                                    <td>{item.ticketId}</td>
+                                                    <td className="text-right">
+                                                        <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
+                                                            <i style={{ color: 'white' }} className="mdi mdi-delete ml-1"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </CardBody>
                         <CardFooter>
                             <div className="d-flex justify-content-between">

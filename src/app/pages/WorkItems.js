@@ -218,7 +218,7 @@ function WorkItems(props) {
                                         <div className="card">
                                              <div className="card-body">
                                                   <div className="d-flex justify-content-between">
-                                                       <h4 className="card-title">Work Items</h4>
+                                                       <h2 className="card-title">Work Items</h2>
                                                        <h4>Total : {currentPage.total}  Item </h4>
                                                   </div>
                                                   <div className="table-responsive">
@@ -342,7 +342,7 @@ function WorkItems(props) {
                                                                  }
                                                                  {!filterApplying &&
                                                                       workItems.map((item, ind) =>
-                                                                           <tr style={{ color: '#9da2b5' }}>
+                                                                           <tr>
                                                                                 <td>
                                                                                      <span className="menu-icon">
                                                                                           <i className={item.type === 'Bug' ? "mdi mdi-bug bug-icon" : "mdi mdi-book-open-page-variant development-icon"}></i>

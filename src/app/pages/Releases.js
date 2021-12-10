@@ -143,7 +143,7 @@ function Releases(props) {
 
      const getRandomColorForAttributeValue = () => {
 
-          const colors = ["info", "warning", "success", "primary", "danger"];
+          const colors = ["info", "warning", "success", "primary", "danger" , "dark" , "secondary"];
 
           const random = Math.floor(Math.random() * colors.length);
 
@@ -168,98 +168,103 @@ function Releases(props) {
                                    <CardTitle tag="h1">Releases</CardTitle>
                               </CardHeader>
                               <CardBody className="table-case">
-                                   <Table className="tablesorter">
-                                        <thead className="text-primary">
-                                             <tr className="table-head-tr">
-                                                  {
-                                                       searchInput.every(item => item !== 'releaseDate') &&
-                                                       <th style={{ minWidth: "200px" }} onClick={() => openInput('releaseDate')} ><b>Release Date</b> <i class="fas fa-search-plus ml-2"></i>
-                                                       </th>
-                                                  }
+                                   <div className="table-responsive">
+                                        <table className="table table-striped">
+                                             <thead className="text-primary">
+                                                  <tr className="table-head-tr">
+                                                       {
+                                                            searchInput.every(item => item !== 'releaseDate') &&
+                                                            <th style={{ minWidth: "200px" }} onClick={() => openInput('releaseDate')} ><b>Release Date</b> <i class="fas fa-search-plus ml-2"></i>
+                                                            </th>
+                                                       }
 
-                                                  {searchInput.find(item => item === 'releaseDate') &&
-                                                       <th className="p-0 row" >
-                                                            <span className="col-6">
-                                                                 {/* <CustomDatePicker
+                                                       {searchInput.find(item => item === 'releaseDate') &&
+                                                            <th className="p-0 row" >
+                                                                 <span className="col-6">
+                                                                      {/* <CustomDatePicker
                                                                       label={'Select Date'}
                                                                       inputFontSize="14px"
                                                                       inputPadding="9px 10px"
                                                                       labelFontSize="15px"
                                                                       setDateToParent={(date) => setSelectedReleaseDate(date)}></CustomDatePicker> */}
-                                                            </span>
-                                                            <span className="col-6">
-                                                                 <i onClick={() => removeFilter('releaseDate')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
-                                                            </span>
-                                                       </th>
-                                                  }
+                                                                 </span>
+                                                                 <span className="col-6">
+                                                                      <i onClick={() => removeFilter('releaseDate')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
+                                                                 </span>
+                                                            </th>
+                                                       }
 
-                                                  {
-                                                       searchInput.every(item => item !== 'project') &&
-                                                       <th style={{ minWidth: "200px" }} onClick={() => openInput('project')} ><b>Project</b> <i class="fas fa-search-plus ml-2"></i>
-                                                       </th>
-                                                  }
-                                                  {/* Project INPUT */}
-                                                  {searchInput.find(item => item === 'project') &&
-                                                       <th className="align-items-center p-0" >
-                                                            <InputGroup>
-                                                                 <InputGroupAddon onClick={() => filters.Project_contains !== projectInputValue ?
-                                                                      setFilter({ ...filters, Project_contains: projectInputValue }) : null} addonType="prepend">
-                                                                      <InputGroupText className="text-input-search-icon">
-                                                                           <i className="fas fa-search-plus" />
-                                                                      </InputGroupText>
-                                                                 </InputGroupAddon>
-                                                                 <Input
-                                                                      type="text"
-                                                                      name="project"
-                                                                      id="project"
-                                                                      value={projectInputValue}
-                                                                      onChange={(e) => setProjectInputValue(e.target.value)}
-                                                                      onKeyDown={(event) => event.key === 'Enter' && filters.Project_contains !== projectInputValue ?
-                                                                           setFilter({ ...filters, Project_contains: projectInputValue }) : null}
-                                                                 />
-                                                                 <i onClick={() => removeFilter('Project_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
-                                                            </InputGroup>
-                                                       </th>
-                                                  }
-                                                  <th style={{ minWidth: "200px" }}>Scope</th>
-                                                  <th style={{ minWidth: "50px" }}></th>
-                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                             {loading &&
-                                                  <tr>
-                                                       <td colspan="9">
-                                                            <div class="spinner">
-                                                                 <div class="dot1"></div>
-                                                                 <div class="dot2"></div>
-                                                            </div>
-                                                       </td>
+                                                       {
+                                                            searchInput.every(item => item !== 'project') &&
+                                                            <th style={{ minWidth: "200px" }} onClick={() => openInput('project')} ><b>Project</b> <i class="fas fa-search-plus ml-2"></i>
+                                                            </th>
+                                                       }
+                                                       {/* Project INPUT */}
+                                                       {searchInput.find(item => item === 'project') &&
+                                                            <th className="align-items-center p-0" >
+                                                                 <InputGroup>
+                                                                      <InputGroupAddon onClick={() => filters.Project_contains !== projectInputValue ?
+                                                                           setFilter({ ...filters, Project_contains: projectInputValue }) : null} addonType="prepend">
+                                                                           <InputGroupText className="text-input-search-icon">
+                                                                                <i className="fas fa-search-plus" />
+                                                                           </InputGroupText>
+                                                                      </InputGroupAddon>
+                                                                      <Input
+                                                                           type="text"
+                                                                           name="project"
+                                                                           id="project"
+                                                                           value={projectInputValue}
+                                                                           onChange={(e) => setProjectInputValue(e.target.value)}
+                                                                           onKeyDown={(event) => event.key === 'Enter' && filters.Project_contains !== projectInputValue ?
+                                                                                setFilter({ ...filters, Project_contains: projectInputValue }) : null}
+                                                                      />
+                                                                      <i onClick={() => removeFilter('Project_contains')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>
+                                                                 </InputGroup>
+                                                            </th>
+                                                       }
+                                                       <th style={{ minWidth: "200px" }}>Scope</th>
+                                                       <th style={{ minWidth: "50px" }}></th>
                                                   </tr>
-                                             }
+                                             </thead>
+                                             <tbody>
+                                                  {
+                                                       loading &&
+                                                       <tr>
+                                                            <td colspan="5">
+                                                                 <div className="d-flex w-100 justify-content-center">
+                                                                      <div class="spinner">
+                                                                      </div>
+                                                                 </div>
 
-
-                                             {!loading &&
-                                                  releaseData.map((item, ind) =>
-                                                       <tr key={ind} className="table-body-tr">
-                                                            <td>{Moment(item.releaseDate).format('DD/MM/YYYY')}</td>
-                                                            <td>{item.Project}</td>
-                                                            <td><Button onClick={() => openReleaseItemsModal(item)}
-                                                                 className="btn-simple btn-rounded btn-sm"
-                                                                 color={`${item.showBtnColor}`}
-                                                            >Show</Button></td>
-                                                            <td className="text-center">
-                                                                 <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
-                                                                      <i style={{ color: 'white' }} className="mdi mdi-delete ml-1"></i>
-                                                                 </button>
                                                             </td>
+
                                                        </tr>
+                                                  }
 
-                                                  )
 
-                                             }
+                                                  {!loading &&
+                                                       releaseData.map((item, ind) =>
+                                                            <tr key={ind} className="table-body-tr">
+                                                                 <td>{Moment(item.releaseDate).format('DD/MM/YYYY')}</td>
+                                                                 <td>{item.Project}</td>
+                                                                 <td><Button onClick={() => openReleaseItemsModal(item)}
+                                                                      className="btn-simple btn-rounded btn-sm"
+                                                                      color={`${item.showBtnColor}`}
+                                                                 >Show</Button></td>
+                                                                 <td className="text-center">
+                                                                      <button onClick={() => confirmationModalActions(item, false)} type="button" className="btn btn-inverse-dark btn-rounded btn-icon ml-2">
+                                                                           <i style={{ color: 'white' }} className="mdi mdi-delete ml-1"></i>
+                                                                      </button>
+                                                                 </td>
+                                                            </tr>
 
-                                        </tbody>
-                                   </Table>
+                                                       )
+
+                                                  }
+
+                                             </tbody>
+                                        </table>
+                                   </div>
                               </CardBody>
                          </Card>
                     </Col>

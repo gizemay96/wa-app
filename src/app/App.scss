@@ -70,7 +70,13 @@
 @import "../assets/styles/layout";
 
 
+tbody{
+  color: aliceblue;
+}
 
+.table-hover tbody tr:hover {
+  color: aliceblue;
+}
 
 .spinner {
   margin: 40px;
