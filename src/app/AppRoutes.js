@@ -25,6 +25,7 @@ const Register1 = lazy(() => import('./user-pages/Register'));
 
 const WorkItems = lazy(() => import('./pages/WorkItems'));
 const Releases = lazy(() => import('./pages/Releases'));
+const Library = lazy(() => import('./pages/Library'));
 
 
 class AppRoutes extends Component {
@@ -55,6 +56,7 @@ class AppRoutes extends Component {
 
           <Route path="/work-items" component={ WorkItems } />
           <Route path="/releases" component={ Releases } />
+          <Route path="/my-library" component={ Library } />
 
 
           <Redirect to="/dashboard" />

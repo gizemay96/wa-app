@@ -42,11 +42,11 @@ function CreateRelease(props) {
     validationSchema: createReleaseValidationShema,
   });
 
-//   const CalendarContainer = ({ children }) => {
-//     const el = document.getElementById("calendar-portal");
+  //   const CalendarContainer = ({ children }) => {
+  //     const el = document.getElementById("calendar-portal");
 
-//     return <Portal container={el}>{children}</Portal>;
-// };
+  //     return <Portal container={el}>{children}</Portal>;
+  // };
 
   return (
 
@@ -57,7 +57,7 @@ function CreateRelease(props) {
         </h2>
         <Card className="card-plain" style={{ padding: "30px 30px 0 30px" }}>
           <CardBody className="create-release-body">
-               {/* <CustomDatePicker label="Release Date" setDateToParent={(date) => setDateFromChild(date)}></CustomDatePicker> */}
+            {/* <CustomDatePicker label="Release Date" setDateToParent={(date) => setDateFromChild(date)}></CustomDatePicker> */}
             <DatePicker className="custom-datepicker w-100"
               selected={startDate}
               onChange={(date) => { setDateFromChild(date); setStartDate(date) }}
