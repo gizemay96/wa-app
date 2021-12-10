@@ -74,8 +74,53 @@ tbody{
   color: aliceblue;
 }
 
+
+.table thead th{
+  min-width: 120px;
+}
+
 .table-hover tbody tr:hover {
   color: aliceblue;
+}
+
+.create-release-body{
+  .react-datepicker-wrapper{
+    width: 100% !important;
+  }
+}
+
+.custom-datepicker{
+  border: 1px solid #2c2e33;
+  height: calc(2.25rem + 2px);
+  font-weight: 400;
+  font-size: .875rem;
+  padding: 0.625rem 0.6875rem;
+  background-color: #2a3038;
+  border-radius: 2px;
+  color: #fff;
+
+  
+}
+.react-datepicker__header{
+  background-color: #ffab00 !important;
+}
+.react-datepicker__day{
+  color: wheat !important;
+}
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover {
+  border-radius: 0.3rem;
+  background-color: #ffab00 !important;
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range{
+  background-color: darken($color: #fc424a , $amount: 10%) !important;
+
+}
+
+.react-datepicker__month-container{
+  background-color: #181b23;
 }
 
 .spinner {

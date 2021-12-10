@@ -1,6 +1,10 @@
 import { React, useEffect, useState } from 'react'
 import Moment from 'moment'
 import { getReleases, deleteRelease, createRelease } from '../../services/release.service';
+import DatePicker from "react-datepicker";
+import { Portal } from "react-overlays";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 // import "../assets/scss/black-dashboard-react/custom/general.scss"
 
@@ -32,7 +36,8 @@ function Releases(props) {
      const [releaseData, setReleaseData] = useState([])
      const [selectedRelease, setSelectedRelease] = useState({})
      const [searchInput, setSearchInput] = useState([]);
-     const [loading, setLoading] = useState(true)
+     const [loading, setLoading] = useState(true);
+     const [startDate, setStartDate] = useState(new Date());
 
      const [filters, setFilter] = useState({
           releaseDate: null,
@@ -117,6 +122,8 @@ function Releases(props) {
           if (type === 'Project_contains') {
                openedInputType = 'project';
                setProjectInputValue('');
+          } else{
+               setStartDate(new Date())
           }
 
           const inputs = searchInput;
@@ -143,7 +150,7 @@ function Releases(props) {
 
      const getRandomColorForAttributeValue = () => {
 
-          const colors = ["info", "warning", "success", "primary", "danger" , "dark" , "secondary"];
+          const colors = ["info", "warning", "success", "primary", "danger", "dark", "secondary"];
 
           const random = Math.floor(Math.random() * colors.length);
 
@@ -151,13 +158,19 @@ function Releases(props) {
 
      }
 
+     const CalendarContainer = ({ children }) => {
+          const el = document.getElementById("calendar-portal");
+
+          return <Portal container={el}>{children}</Portal>;
+     };
+
 
 
      return (
           <div className="content">
 
-               <div className="d-flex justify-content-end">
-                    <Button color="info btn-md" onClick={toggleCreateReleaseModal}>{buttonLabel}Create Release</Button>
+               <div className="d-flex justify-content-end mb-3">
+                    <Button color="info btn-md btn-rounded" onClick={toggleCreateReleaseModal}>{buttonLabel}Create Release</Button>
                </div>
 
 
@@ -180,13 +193,17 @@ function Releases(props) {
 
                                                        {searchInput.find(item => item === 'releaseDate') &&
                                                             <th className="p-0 row" >
-                                                                 <span className="col-6">
-                                                                      {/* <CustomDatePicker
-                                                                      label={'Select Date'}
-                                                                      inputFontSize="14px"
-                                                                      inputPadding="9px 10px"
-                                                                      labelFontSize="15px"
-                                                                      setDateToParent={(date) => setSelectedReleaseDate(date)}></CustomDatePicker> */}
+                                                                 <span className="col-5">
+                                                                      <div className="react-datepicker-wrapper">
+
+                                                                      </div>
+                                                                      <DatePicker className="custom-datepicker"
+                                                                           selected={startDate}
+                                                                           onChange={(date) => { setSelectedReleaseDate(date); setStartDate(date) }}
+                                                                           popperContainer={CalendarContainer}
+                                                                           dateFormat="dd/MM/yyyy"
+                                                                           popperPlacement="bottom-end"
+                                                                      />
                                                                  </span>
                                                                  <span className="col-6">
                                                                       <i onClick={() => removeFilter('releaseDate')} className="fas fa-times-circle col-md-1 p-0 close-search-icon"></i>

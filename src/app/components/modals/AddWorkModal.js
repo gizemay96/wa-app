@@ -286,7 +286,7 @@ function AddWorkModal(props) {
                                         {!filterApplying &&
                                             workItems.map((item, ind) =>
                                                 <tr key={ind} className="table-body-tr">
-                                                    <td>
+                                                    <td style={{minWidth: '145px'}}>
                                                         <span className="menu-icon">
                                                             <i className={item.type === 'Bug' ? "mdi mdi-bug bug-icon" : "mdi mdi-book-open-page-variant development-icon"}></i>
                                                         </span>
