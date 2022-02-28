@@ -60,7 +60,7 @@ class Sidebar extends Component {
           <img style={{ width: '130px' }} className="sidebar-brand" src={logo} alt="logo" />
         </div>
         <ul className="nav">
-          <li className="nav-item profile">
+          {/* <li className="nav-item profile">
             <div className="profile-desc">
               <div className="profile-pic">
                 <div className="count-indicator">
@@ -112,12 +112,12 @@ class Sidebar extends Component {
                 </Dropdown.Menu>
               </Dropdown>
             </div>
-          </li>
-          <li className="nav-item nav-category">
+          </li> */}
+          {/* <li className="nav-item nav-category">
             <span className="nav-link"><Trans>Navigation</Trans></span>
-          </li>
+          </li> */}
           <li className={this.isPathActive('/dashboard') ? 'nav-item menu-items active' : 'nav-item menu-items'}>
-            <Link className="nav-link" to="/dashboard">
+            <Link className="nav-link mt-4" to="/dashboard">
               <span className="menu-icon"><i className="mdi mdi-speedometer"></i></span>
               <span className="menu-title"><Trans>Dashboard</Trans></span>
             </Link>

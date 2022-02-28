@@ -10,7 +10,7 @@ export const getReleases = async (params) => {
      const query = getQuery(params);
 
      return await axios
-          .get(`${url}/releases?${query}&[users_permissions_user._id]=${getInfo('user').id}`, {
+          .get(`${url}/releases?${query}&[users_permissions_user._id]=${getInfo('user').id}&_sort=createdAt:DESC`, {
                headers: {
                     Authorization: `Bearer ${getInfo('token')}`,
                },
@@ -19,7 +19,7 @@ export const getReleases = async (params) => {
 
 export const getReleaseById = async (id) => {
      return await axios
-          .get(`${url}/releases/${id}?[users_permissions_user._id]=${getInfo('user').id}`, {
+          .get(`${url}/releases/${id}?[users_permissions_user._id]=${getInfo('user').id}&_sort=createdAt:DESC`, {
                headers: {
                     Authorization: `Bearer ${getInfo('token')}`,
                },

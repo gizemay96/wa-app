@@ -59,7 +59,7 @@ function AddWorkModal(props) {
     const getItems = async () => {
         const worksData = await getWorks(filters)
         let selectedItemsData = worksData.data.reduce((arr, item) => {
-            item.disabled = props.initData.some(initItem => initItem.id === item.id) ? true : false;
+            item.disabled = props.initData?.some(initItem => initItem.id === item.id) ? true : false;
             if (item.disabled && !selectedItems.some(added => added.id === item.id)) arr.push(item);
             return arr;
         }, []);

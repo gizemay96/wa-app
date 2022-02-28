@@ -55,6 +55,7 @@ function WorkItems(props) {
           buttonLabel,
           className = "modal-sm"
      } = props;
+
      const [modal, setModal] = useState(false);
      const toggleModal = () => setModal(!modal, modal === true ? setSelectedItem(null) : null);
 
@@ -109,7 +110,6 @@ function WorkItems(props) {
      const confirmationModalActions = (item = null, onlyClose = true) => {
           if (!onlyClose)
                setSelectedItem(item);
-
           toggleDeleteConfirmModal();
      }
 
@@ -417,7 +417,7 @@ function WorkItems(props) {
 
                <Modal isOpen={deleteConfirmModal} toggle={toggleDeleteConfirmModal} className={className}>
                     <ModalBody>
-                         <DeleteConfirmation message="Are You Sure You Want Delete ?" actionYes={() => deleteItem(selectedItem.id)} actionNo={confirmationModalActions}></DeleteConfirmation>
+                         <DeleteConfirmation message="Are You Sure You Want Delete ?" actionYes={() => deleteItem(selectedItem.id)} actionNo={() => confirmationModalActions(null , false)}></DeleteConfirmation>
                     </ModalBody>
                </Modal>
 

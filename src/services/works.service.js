@@ -10,7 +10,7 @@ export const getWorks = async (params) => {
      const query = getQuery(params);
 
      return await axios
-          .get(`${url}/works?${query}&[users_permissions_user._id]=${'617006d7bdbce900164f4636'}`, {
+          .get(`${url}/works?${query}&[users_permissions_user._id]=${'617006d7bdbce900164f4636'}&_sort=createdAt:DESC`, {
                headers: {
                     Authorization: `Bearer ${getInfo('token')}`,
                },
@@ -19,7 +19,7 @@ export const getWorks = async (params) => {
 
 export const getWorkById = async (id) => {
      return await axios
-          .get(`${url}/works/${id}?[users_permissions_user._id]=${'617006d7bdbce900164f4636'}`, {
+          .get(`${url}/works/${id}?[users_permissions_user._id]=${'617006d7bdbce900164f4636'}&_sort=createdAt:DESC`, {
                headers: {
                     Authorization: `Bearer ${getInfo('token')}`,
                },

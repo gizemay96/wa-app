@@ -122,7 +122,7 @@ function CreateWork(props) {
                                         <FormGroup>
                                              <Label className="log-reg-label" for="type">Work Type</Label>
                                              <Input
-                                                  autocomplete="off"
+                                                  autoComplete="off"
                                                   type="select"
                                                   name="type"
                                                   id="type"
@@ -136,7 +136,7 @@ function CreateWork(props) {
                                         <FormGroup>
                                              <Label className="log-reg-label" for="ticketId">Ticket Id</Label>
                                              <Input
-                                                  autocomplete="off"
+                                                  autoComplete="off"
                                                   id="ticketId"
                                                   name="ticketId"
                                                   type="ticketId"
@@ -147,7 +147,7 @@ function CreateWork(props) {
                                         <FormGroup>
                                              <Label className="log-reg-label" for="name">Work Name</Label>
                                              <Input
-                                                  autocomplete="off"
+                                                  autoComplete="off"
                                                   id="name"
                                                   name="name"
                                                   type="name"
@@ -158,7 +158,7 @@ function CreateWork(props) {
                                         <FormGroup>
                                              <Label className="log-reg-label" for="branch">Work Branch</Label>
                                              <Input
-                                                  autocomplete="off"
+                                                  autoComplete="off"
                                                   id="branch"
                                                   name="branch"
                                                   type="branch"

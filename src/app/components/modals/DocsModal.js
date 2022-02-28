@@ -160,7 +160,7 @@ function DocsModal(props) {
 
                                                             {
                                                                  loading &&
-                                                                 <div class="spin-wrapper">
+                                                                 <div className="d-flex w-100 justify-content-center">
                                                                       <div class="spinner">
                                                                       </div>
                                                                  </div>
@@ -183,7 +183,7 @@ function DocsModal(props) {
                                                                                 <div className="col-2"><CardImg className="file-img" top src={fileIcons[doc.ext?.substring(1)]} alt="..." /></div>
                                                                                 <div className="col-7" style={{ color: "white", fontSize: "12px" }}>{doc.name}</div>
                                                                                 <div className="col-5 p-0">
-                                                                                     <Button target={doc.ext === '.pdf' ? '_blank' : ''} href={`https://waa-app.herokuapp.com${doc.url}`} className="btn-rounded mr-1" color="warning">
+                                                                                     <Button target={doc.ext === '.pdf' ? '_blank' : ''} href={`http://localhost:1338${doc.url}`} className="btn-rounded mr-1" color="warning">
                                                                                           <i class="fas fa-download m-0"></i>
                                                                                      </Button>
                                                                                      <Button onClick={() => deleteFile(doc.id)} className="btn-rounded" color="danger">
@@ -224,10 +224,10 @@ function DocsModal(props) {
                                              <CardBody>
                                                   {
                                                        loading &&
-                                                       <div class="spin-wrapper">
-                                                       <div class="spinner">
+                                                       <div className="d-flex w-100 justify-content-center">
+                                                            <div class="spinner">
+                                                            </div>
                                                        </div>
-                                                  </div>
                                                   }
 
                                                   {
@@ -240,7 +240,10 @@ function DocsModal(props) {
                                                                  onChange={(event => setWorkNotes(event.target.value))}
                                                                  style={{ height: "170px", padding: "10px", fontSize: "14px", maxHeight: "200px" }}
                                                             ></Input>
-                                                            <div className="text-right">
+                                                            <div className="d-flex justify-content-between align-items-center">
+                                                                 <Button onClick={props.closeDocModal} className="btn-rounded" color="danger">
+                                                                      Close
+                                                                 </Button>
                                                                  <Button disabled={workNotes === workItem.notes} onClick={saveWorkNotes} className="col-6 btn-sm mt-3 mb-3" color="primary">
                                                                       <i class="fas fa-save"></i> Save Changes
                                                                  </Button>
